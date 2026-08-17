@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Clash of Minds AI - A multi-agent AI debate system using LLMs for argument generation and evaluation."
+    >
+
+    <title>Clash of Minds AI</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         Header
+         ========================================= -->
+
+    <header class="hero">
+
+        <div class="hero-overlay">
+
+            <h1>Clash of Minds AI</h1>
+
+            <p>
+                Engage in a lively debate between two AI models.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         Main Application
+         ========================================= -->
+
+    <main class="application-container">
+
+
+        <!-- =====================================
+             Hugging Face API
+             ===================================== -->
+
+        <section
+            id="enterkey"
+            class="glass-card api-card"
+        >
+
+            <h2>Connect to Hugging Face</h2>
+
+            <p>
+                Enter your Hugging Face API token to start an AI debate.
+            </p>
+
+            <p class="small-text">
+                You can create an API token from
+                <a
+                    href="https://huggingface.co/settings/tokens"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Hugging Face
+                </a>.
+            </p>
+
+            <div class="api-input-row">
+
+                <input
+                    type="password"
+                    id="apikey"
+                    placeholder="Enter your Hugging Face API token"
+                    autocomplete="off"
+                >
+
+                <button
+                    id="set-api-key"
+                    class="green-button"
+                    type="button"
+                >
+                    Set API Key
+                </button>
+
+            </div>
+
+            <p
+                id="keyWarning"
+                class="warning"
+            ></p>
+
+        </section>
+
+
+        <!-- =====================================
+             Debate Configuration
+             ===================================== -->
+
+        <section class="glass-card configuration-card">
+
+            <h2>Select AI Models for Debate</h2>
+
+
+            <div class="model-selection">
+
+
+                <!-- Supporter -->
+
+                <div class="model-column">
+
+                    <label for="ai1Select">
+                        Select Supporter
+                    </label>
+
+                    <select id="ai1Select">
+
+                        <option value="meta-llama/Llama-3.2-3B-Instruct:featherless-ai">
+                            Llama-3.2-3B-Instruct
+                        </option>
+
+                         <option value="google/gemma-3-1b-it:featherless-ai">
+                            Gemma-3-1b-it
+                        </option>
+
+                        <option value="deepseek-ai/DeepSeek-V4-Flash:novita">
+                            DeepSeek-V4-Flash
+                        </option>
+
+                        <option value="Qwen/Qwen2.5-Coder-32B-Instruct">
+                            Qwen2.5-Coder-32B-Instruct
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Challenger -->
+
+                <div class="model-column">
+
+                    <label for="ai2Select">
+                        Select Challenger
+                    </label>
+
+                    <select id="ai2Select">
+
+                         <option value="google/gemma-3-1b-it:featherless-ai">
+                            Gemma-3-1b-it
+                        </option>
+
+                        <option value="deepseek-ai/DeepSeek-V4-Flash:novita">
+                            DeepSeek-V4-Flash
+                        </option>
+
+                        <option value="meta-llama/Llama-3.2-3B-Instruct:featherless-ai">
+                            Llama-3.2-3B-Instruct
+                        </option>
+
+                        <option value="Qwen/Qwen2.5-Coder-32B-Instruct">
+                            Qwen2.5-Coder-32B-Instruct
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Judge -->
+
+                <div class="model-column">
+
+                    <label for="judgeSelect">
+                        Select Judge
+                    </label>
+
+                    <select id="judgeSelect">
+
+                        <option value="Qwen/Qwen2.5-Coder-32B-Instruct">
+                            Qwen2.5-Coder-32B-Instruct
+                        </option>
+
+                        <option value="google/gemma-3-1b-it:featherless-ai">
+                            Gemma-3-1b-it
+                        </option>
+                        
+                        <option value="meta-llama/Llama-3.2-3B-Instruct:featherless-ai">
+                            Llama-3.2-3B-Instruct
+                        </option>
+
+                        <option value="deepseek-ai/DeepSeek-V4-Flash:novita">
+                            DeepSeek-V4-Flash
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <p
+                id="aiWarning"
+                class="warning"
+            ></p>
+
+
+            <!-- Debate Topic -->
+
+            <div class="topic-section">
+
+                <label for="debateTopic">
+                    Debate Topic
+                </label>
+
+                <div class="topic-row">
+
+                    <input
+                        type="text"
+                        id="debateTopic"
+                        value="What are the key benefits of renewable energy?"
+                    >
+
+                    <button
+                        id="generate-topic"
+                        class="topic-button"
+                        type="button"
+                        title="Generate a new debate topic"
+                    >
+
+                        <img
+                            src="assets/images/add-topic.png"
+                            alt=""
+                            class="topic-icon"
+                        >
+
+                        Generate Topic
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="initiate-debate"
+                class="start-button"
+                type="button"
+            >
+                Start Debate
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             Debate Stage
+             ===================================== -->
+
+        <section
+            id="debateWrapper"
+            class="debate-stage"
+        >
+
+            <div
+                class="debate-background"
+                aria-hidden="true"
+            >
+
+                <img
+                    src="assets/images/debate-background.jpg"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="debate-participants">
+
+
+                <!-- =================================
+                     Supporter
+                     ================================= -->
+
+                <article
+                    class="participant-card supporter-card"
+                >
+
+                    <div class="bot-container">
+
+                        <img
+                            src="assets/images/bot-blue.jpeg"
+                            alt="Supporter AI"
+                            class="bot-image"
+                        >
+
+                    </div>
+
+                    <h2 id="ai1Name">
+                        Supporter's Perspective
+                    </h2>
+
+                    <div
+                        id="ai1Argument"
+                        class="argument-box"
+                        aria-live="polite"
+                    >
+                        Waiting for the debate to begin...
+                    </div>
+
+                </article>
+
+
+                <!-- =================================
+                     Challenger
+                     ================================= -->
+
+                <article
+                    class="participant-card challenger-card"
+                >
+
+                    <div class="bot-container">
+
+                        <img
+                            src="assets/images/bot-red.jpeg"
+                            alt="Challenger AI"
+                            class="bot-image"
+                        >
+
+                    </div>
+
+                    <h2 id="ai2Name">
+                        Challenger's Counterpoint
+                    </h2>
+
+                    <div
+                        id="ai2Counterpoint"
+                        class="argument-box"
+                        aria-live="polite"
+                    >
+                        Waiting for the Supporter's argument...
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             Judge
+             ===================================== -->
+
+        <section class="judge-section">
+
+            <div class="judge-icon">
+                J
+            </div>
+
+            <h2 id="judgeName">
+                Judge's Decision
+            </h2>
+
+            <div
+                id="judgeDecision"
+                class="judge-result"
+                aria-live="polite"
+            >
+                The judge will evaluate both sides after the debate.
+            </div>
+
+
+            <!-- Winner -->
+
+        <div class="debate-result">
+            <div class="result-column winner-column">
+                <div class="result-icon">🏆</div>
+                <h3>Winner</h3>
+                <p id="winner-result">—</p>
+            </div>
+
+            <div class="result-column runner-column">
+                <div class="result-icon">🥈</div>
+                <h3>Runner-up</h3>
+                <p id="runner-up-result">—</p>
+            </div>
+        </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         Footer
+         ========================================= -->
+
+    <footer class="footer">
+
+        <p>
+            This AI project is for research and educational purposes only.
+            AI-generated arguments and decisions may be inaccurate and should
+            be independently verified.
+        </p>
+
+    </footer>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

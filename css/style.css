@@ -1,0 +1,973 @@
+/* =========================================
+   Clash of Minds AI
+   Main Stylesheet
+   ========================================= */
+
+:root {
+    --blue: #1769e0;
+    --blue-dark: #0b4ea2;
+
+    --red: #e43f46;
+    --red-dark: #b91c25;
+
+    --green: #21a44a;
+    --green-dark: #168238;
+
+    --dark: #071b35;
+    --text: #172033;
+    --muted: #64748b;
+
+    --white: rgba(255, 255, 255, 0.94);
+
+    --border: rgba(255, 255, 255, 0.45);
+
+    --shadow:
+        0 15px 40px rgba(0, 0, 0, 0.20);
+
+    --radius: 14px;
+}
+
+
+/* =========================================
+   Global
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            135deg,
+            #081a33,
+            #182653,
+            #071b35
+        );
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   Hero
+   ========================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 210px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(4, 25, 52, 0.72),
+            rgba(4, 25, 52, 0.72)
+        ),
+        url("../assets/images/debate-background.jpg")
+        center / cover no-repeat;
+}
+
+.hero-overlay {
+    width: 100%;
+
+    padding: 45px 20px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size:
+        clamp(2.3rem, 5vw, 4.2rem);
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+}
+
+.hero p {
+    margin: 10px 0 0;
+
+    font-size: 1.15rem;
+
+    font-style: italic;
+
+    color: #e2e8f0;
+}
+
+
+/* =========================================
+   Application Container
+   ========================================= */
+
+.application-container {
+    width: min(1200px, calc(100% - 32px));
+
+    margin: -35px auto 0;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   Glass Cards
+   ========================================= */
+
+.glass-card {
+    margin-bottom: 22px;
+
+    padding: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+.glass-card h2 {
+    margin:
+        0 0 22px;
+
+    text-align: center;
+
+    font-size: 1.55rem;
+}
+
+
+/* =========================================
+   API Card
+   ========================================= */
+
+.api-card {
+    text-align: center;
+}
+
+.api-card p {
+    margin: 8px 0;
+
+    color: var(--muted);
+}
+
+.small-text {
+    font-size: 0.9rem;
+}
+
+.api-card a {
+    color: var(--blue);
+
+    font-weight: 700;
+}
+
+.api-input-row {
+    display: flex;
+
+    gap: 12px;
+
+    max-width: 700px;
+
+    margin: 22px auto 0;
+}
+
+.api-input-row input {
+    flex: 1;
+}
+
+
+/* =========================================
+   Inputs
+   ========================================= */
+
+input,
+select {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid #d6dce5;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: var(--text);
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 224, 0.15);
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   Buttons
+   ========================================= */
+
+button {
+    border: 0;
+
+    border-radius: 7px;
+
+    padding: 12px 20px;
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease,
+        opacity 0.15s ease;
+}
+
+button:hover {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform:
+        translateY(0);
+}
+
+button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* Green API button */
+
+.green-button {
+    background:
+        var(--green);
+
+    color: white;
+
+    white-space: nowrap;
+}
+
+.green-button:hover {
+    background:
+        var(--green-dark);
+}
+
+
+/* =========================================
+   Model Selection
+   ========================================= */
+
+.model-selection {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+
+    margin-top: 15px;
+}
+
+.model-column {
+    text-align: left;
+}
+
+.model-column label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 700;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================
+   Debate Topic
+   ========================================= */
+
+.topic-section {
+    margin-top: 28px;
+}
+
+.topic-section > label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 700;
+}
+
+.topic-row {
+    display: flex;
+
+    gap: 12px;
+}
+
+.topic-row input {
+    flex: 1;
+}
+
+.topic-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background:
+        #475569;
+
+    color: white;
+
+    white-space: nowrap;
+}
+
+.topic-button:hover {
+    background:
+        #334155;
+}
+
+.topic-icon {
+    width: 21px;
+    height: 21px;
+
+    object-fit: contain;
+
+    filter:
+        brightness(0) invert(1);
+}
+
+
+/* =========================================
+   Start Debate
+   ========================================= */
+
+.start-button {
+    display: block;
+
+    width: min(320px, 100%);
+
+    margin: 26px auto 0;
+
+    padding: 14px 25px;
+
+    background:
+        var(--blue);
+
+    color: white;
+
+    font-size: 1rem;
+}
+
+.start-button:hover {
+    background:
+        var(--blue-dark);
+}
+
+
+/* =========================================
+   Warnings
+   ========================================= */
+
+.warning {
+    min-height: 20px;
+
+    margin:
+        10px 0 0;
+
+    color:
+        #dc2626;
+
+    text-align: center;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   Debate Stage
+   ========================================= */
+
+.debate-stage {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 610px;
+
+    margin-top: 25px;
+
+    padding: 50px 25px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+/* Background */
+
+.debate-background {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+}
+
+.debate-background img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+}
+
+
+/* Dark overlay */
+
+.debate-background::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(4, 15, 35, 0.25),
+            rgba(4, 15, 35, 0.45)
+        );
+}
+
+
+/* Participants */
+
+.debate-participants {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+    align-items: start;
+}
+
+
+/* =========================================
+   Participant Cards
+   ========================================= */
+
+.participant-card {
+    min-height: 360px;
+
+    padding: 28px 18px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter:
+        blur(5px);
+}
+
+.supporter-card {
+    background:
+        rgba(37, 150, 230, 0.92);
+
+    border:
+        2px solid rgba(90, 190, 255, 0.7);
+}
+
+.challenger-card {
+    background:
+        rgba(226, 63, 70, 0.92);
+
+    border:
+        2px solid rgba(255, 120, 125, 0.7);
+}
+
+.participant-card h2 {
+    margin:
+        14px 0 18px;
+
+    color:
+        #10233d;
+
+    font-size:
+        1.35rem;
+}
+
+
+/* =========================================
+   Bot Images
+   ========================================= */
+
+.bot-container {
+    width: 100px;
+    height: 100px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.bot-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================
+   Argument Boxes
+   ========================================= */
+
+.argument-box {
+    min-height: 150px;
+
+    padding: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.7);
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    color:
+        #182033;
+
+    white-space:
+        pre-wrap;
+
+    overflow-wrap:
+        anywhere;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   Judge
+   ========================================= */
+
+.judge-section {
+    width: min(900px, 100%);
+
+    margin:
+        25px auto 0;
+
+    padding:
+        32px;
+
+    text-align: center;
+
+    background:
+        rgba(240, 255, 240, 0.97);
+
+    border-top:
+        6px solid var(--green);
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        var(--shadow);
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.judge-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+    border-radius: 50%;
+
+    background:
+        var(--green);
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    font-weight: 800;
+}
+
+.judge-section h2 {
+    margin:
+        0 0 20px;
+
+    font-size:
+        1.4rem;
+}
+
+.judge-result {
+    min-height: 130px;
+
+    padding: 22px;
+
+    background:
+        #f8fafc;
+
+    border:
+        1px solid #86efac;
+
+    border-radius:
+        10px;
+
+    text-align:
+        left;
+
+    white-space:
+        pre-wrap;
+
+    overflow-wrap:
+        anywhere;
+}
+
+
+/* =========================================
+   Winner
+   ========================================= */
+
+.winner-card {
+    display: none;
+
+    justify-content:
+        center;
+
+    gap: 70px;
+
+    margin-top:
+        25px;
+
+    padding-top:
+        25px;
+
+    border-top:
+        1px solid #bbf7d0;
+}
+
+.winner-result {
+    min-width: 150px;
+
+    padding: 14px 20px;
+
+    border-radius: 10px;
+
+    font-weight: 800;
+
+    font-size: 1.1rem;
+}
+
+.supporter-winner {
+    color:
+        var(--blue);
+}
+
+.challenger-winner {
+    color:
+        var(--red);
+}
+
+
+/* =========================================
+   Loading
+   ========================================= */
+
+.loader {
+    width: 42px;
+    height: 42px;
+
+    margin: 30px auto;
+
+    border:
+        4px solid #dbe4ef;
+
+    border-top-color:
+        var(--blue);
+
+    border-radius:
+        50%;
+
+    animation:
+        spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   Footer
+   ========================================= */
+
+.footer {
+    width: min(900px, calc(100% - 32px));
+
+    margin:
+        30px auto 45px;
+
+    padding:
+        10px 20px;
+
+    color:
+        #cbd5e1;
+
+    text-align:
+        center;
+
+    font-size:
+        0.85rem;
+
+    position:
+        relative;
+
+    z-index:
+        5;
+}
+
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .model-selection {
+        grid-template-columns:
+            1fr;
+    }
+
+    .debate-participants {
+        grid-template-columns:
+            1fr;
+    }
+
+    .debate-stage {
+        padding:
+            30px 15px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .application-container {
+        width:
+            calc(100% - 18px);
+    }
+
+    .glass-card {
+        padding:
+            22px 16px;
+    }
+
+    .api-input-row,
+    .topic-row {
+        flex-direction:
+            column;
+    }
+
+    .api-input-row button,
+    .topic-row button {
+        width:
+            100%;
+    }
+
+    .hero {
+        min-height:
+            180px;
+    }
+
+    .hero h1 {
+        font-size:
+            2.3rem;
+    }
+
+    .hero p {
+        font-size:
+            0.95rem;
+    }
+
+    .participant-card {
+        min-height:
+            300px;
+    }
+
+    .judge-section {
+        padding:
+            25px 16px;
+    }
+
+    .winner-card {
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+    }
+
+}
+
+
+.debate-result {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.result-column {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.result-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.result-column h3 {
+    margin: 5px 0 12px;
+    font-size: 24px;
+}
+
+.result-column p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.winner-column h3 {
+    color: #1677ff;
+}
+
+.runner-column h3 {
+    color: #ef3f4f;
+}
+
+@media (max-width: 700px) {
+    .debate-result {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}

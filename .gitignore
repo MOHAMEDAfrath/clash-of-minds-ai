@@ -1,0 +1,37 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# API keys and secrets
+secrets/
+*.key
+*.pem
+config.local.js
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+
+# Temporary files
+tmp/
+temp/
+
+# Build / generated files
+dist/
+build/
+
+# Local development files
+*.local
